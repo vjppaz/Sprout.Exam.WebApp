@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Sprout.Exam.WebApp.Data;
 
 namespace Sprout.Exam.WebApp.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230131101816_EmployeeAndTypeAdjustments")]
+    partial class EmployeeAndTypeAdjustments
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -305,18 +307,6 @@ namespace Sprout.Exam.WebApp.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("EmployeeType");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            TypeName = "Regular"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            TypeName = "Contractual"
-                        });
                 });
 
             modelBuilder.Entity("Sprout.Exam.DataAccess.Models.ApplicationUser", b =>

@@ -39,6 +39,9 @@ namespace Sprout.Exam.WebApp.Data
                 .HasMaxLength(50)
                 .IsRequired();
 
+            builder.Entity<EmployeeType>().HasData(new EmployeeType { Id = 1, TypeName = "Regular" });
+            builder.Entity<EmployeeType>().HasData(new EmployeeType { Id = 2, TypeName = "Contractual" });
+
             base.OnModelCreating(builder);
         }
 
