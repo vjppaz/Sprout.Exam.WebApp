@@ -100,14 +100,13 @@ namespace Sprout.Exam.WebApp.Controllers
         /// <summary>
         /// Refactor this method to go through proper layers and use Factory pattern
         /// </summary>
-        /// <param name="id"></param>
-        /// <param name="absentDays"></param>
-        /// <param name="workedDays"></param>
+        /// <param name="id">The id of the employee.</param>
+        /// <param name="data">Contains the absent days and worked days.</param>
         /// <returns></returns>
         [HttpPost("{id}/calculate")]
-        public async Task<IActionResult> Calculate(int id, decimal absentDays, decimal workedDays)
+        public async Task<IActionResult> Calculate(int id, CalculateSalaryDto data)
         {
-            var result = await calculateSalaryCommand.ExecuteAsync(new SalaryCalculatorParameter(id, absentDays, workedDays), CancellationToken.None);
+            var result = await calculateSalaryCommand.ExecuteAsync(new SalaryCalculatorParameter(id, data.AbsentDays, data.WorkedDays), CancellationToken.None);
             return Ok(result);
         }
     }

@@ -28,6 +28,7 @@ namespace Sprout.Exam.Business.Query
                 .ActiveOnly()
                 .Select(m => new EmployeeDto
                 {
+                    Id = m.Id,
                     Birthdate = m.Birthdate.ToString(SystemConstants.DefaultDateFormat),
                     FullName = m.FullName,
                     Tin = m.TIN,

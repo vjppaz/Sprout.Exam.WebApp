@@ -18,7 +18,8 @@ namespace Sprout.Exam.Business.SaralyHandler.Salaries
 
         public override decimal Calculate(Employee employee, SalaryCalculatorArgument argument)
         {
-            return dailyRate * argument.WorkedDays;
+            var salary = dailyRate * argument.WorkedDays;
+            return Math.Round(salary, 2);
         }
     }
 }

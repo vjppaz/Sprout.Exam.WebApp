@@ -24,7 +24,8 @@ namespace Sprout.Exam.Business.SaralyHandler.Computations
             var absentCost = argument.AbsentDays * dailyRate;
             var taxCost = basicMonthlySalary * tax;
 
-            return basicMonthlySalary - absentCost - taxCost;
+            var salary = basicMonthlySalary - absentCost - taxCost;
+            return Math.Round(salary, 2);
         }
     }
 }
