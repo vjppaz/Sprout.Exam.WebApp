@@ -1,16 +1,22 @@
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Sprout.Exam.Business.Command;
+using Sprout.Exam.Business.Interfaces.Command;
+using Sprout.Exam.Business.Interfaces.Query;
+using Sprout.Exam.Business.Query;
+using Sprout.Exam.Business.SaralyHandler;
+using Sprout.Exam.Business.SaralyHandler.Computations;
+using Sprout.Exam.Business.SaralyHandler.Salaries;
+using Sprout.Exam.DataAccess.Models;
 using Sprout.Exam.WebApp.Data;
-using Sprout.Exam.WebApp.Models;
+using System;
 
 namespace Sprout.Exam.WebApp
 {
@@ -44,11 +50,43 @@ namespace Sprout.Exam.WebApp
             services.AddControllersWithViews();
             services.AddRazorPages();
 
+            AddCommands(services);
+            AddQueries(services);
+            AddFactories(services);
+
             // In production, the React files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
             {
                 configuration.RootPath = "ClientApp/build";
             });
+        }
+
+        private void AddFactories(IServiceCollection services)
+        {
+            services.AddScoped<ISalaryHandlerFactory>(m =>
+            {
+                var factory = ActivatorUtilities.CreateInstance<SalaryHandlerFactory>(m);
+
+                factory.RegisterCalculator(ActivatorUtilities.CreateInstance<ContractualSalaryCalculator>(m));
+                factory.RegisterCalculator(ActivatorUtilities.CreateInstance<RegularSalaryCalculator>(m));
+                //TODO: Add new salary calculator here when a new Employee Type is added.
+
+                return factory;
+            });
+        }
+
+        private static void AddQueries(IServiceCollection services)
+        {
+            services.AddScoped<IGetEmployeesQuery, GetEmployeesQuery>();
+            services.AddScoped<IGetEmployeeByIdQuery, GetEmployeeByIdQuery>();
+        }
+
+        private static void AddCommands(IServiceCollection services)
+        {
+            services.AddScoped<IAddEmployeeCommand, AddEmployeeCommand>();
+            services.AddScoped<ICalculateSalaryCommand, CalculateSalaryCommand>();
+            services.AddScoped<IDeleteEmployeeCommand, DeleteEmployeeCommand>();
+            services.AddScoped<IUpdateEmployeeCommand, UpdateEmployeeCommand>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
