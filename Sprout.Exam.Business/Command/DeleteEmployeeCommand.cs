@@ -20,6 +20,13 @@ namespace Sprout.Exam.Business.Command
             this.context = context ?? throw new ArgumentNullException(nameof(context));
         }
 
+        /// <summary>
+        /// The execute async method.
+        /// </summary>
+        /// <param name="input">The employee id.</param>
+        /// <param name="cancellationToken">The cancellation token.</param>
+        /// <returns>The task.</returns>
+        /// <exception cref="KeyNotFoundException">Throws when input/id does not exist in employee table.</exception>
         public async Task ExecuteAsync(int input, CancellationToken cancellationToken)
         {
             var set = this.context.Set<Employee>();

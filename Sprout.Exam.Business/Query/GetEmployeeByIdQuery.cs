@@ -19,6 +19,13 @@ namespace Sprout.Exam.Business.Query
             this.context = context;
         }
 
+        /// <summary>
+        /// The execute async method.
+        /// </summary>
+        /// <param name="parameter">The employee id.</param>
+        /// <param name="cancellationToken">The cancellation token.</param>
+        /// <returns>The employee details.</returns>
+        /// <exception cref="KeyNotFoundException">Throws when parameter/id does not exist in employee table.</exception>
         public async Task<EmployeeDto> ExecuteAsync(int parameter, CancellationToken cancellationToken)
         {
             var employee = await context.Set<Employee>().ActiveOnly().FirstOrDefaultAsync(m => m.Id == parameter);

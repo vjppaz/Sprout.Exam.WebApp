@@ -10,7 +10,7 @@ namespace Sprout.Exam.Business.SaralyHandler.Salaries
 {
     public record SalaryCalculatorArgument(decimal AbsentDays, decimal WorkedDays);
 
-    public abstract class BaseCalculator
+    public abstract class BaseCalculator : ISalaryCalculator
     {
         public BaseCalculator(EmployeeTypes targetType)
         {

@@ -1,15 +1,21 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30717.126
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32630.192
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sprout.Exam.WebApp", "Sprout.Exam.WebApp\Sprout.Exam.WebApp.csproj", "{1A7BD9B9-4F89-4AF3-8540-6FB82B793212}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sprout.Exam.WebApp", "Sprout.Exam.WebApp\Sprout.Exam.WebApp.csproj", "{1A7BD9B9-4F89-4AF3-8540-6FB82B793212}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sprout.Exam.Business", "Sprout.Exam.Business\Sprout.Exam.Business.csproj", "{C5431F89-D19E-4848-985C-E622C0D349D8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sprout.Exam.Business", "Sprout.Exam.Business\Sprout.Exam.Business.csproj", "{C5431F89-D19E-4848-985C-E622C0D349D8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sprout.Exam.DataAccess", "Sprout.Exam.DataAccess\Sprout.Exam.DataAccess.csproj", "{45A7F393-1704-4881-A782-2FC8AA32BCD6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sprout.Exam.DataAccess", "Sprout.Exam.DataAccess\Sprout.Exam.DataAccess.csproj", "{45A7F393-1704-4881-A782-2FC8AA32BCD6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sprout.Exam.Common", "Sprout.Exam.Common\Sprout.Exam.Common.csproj", "{8DFA8282-B821-463A-914D-E3DE367A1BE7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sprout.Exam.Common", "Sprout.Exam.Common\Sprout.Exam.Common.csproj", "{8DFA8282-B821-463A-914D-E3DE367A1BE7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{07E6609F-5A4D-42A5-A5FA-6623ED94773B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sprout.Exam.Business.Tests", "Tests\Sprout.Exam.Business.Tests\Sprout.Exam.Business.Tests.csproj", "{0419B9D8-B678-4643-99A2-ED3BC6B7D0F9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sprout.Exam.DataAccess.Tests", "Tests\Sprout.Exam.DataAccess.Tests\Sprout.Exam.DataAccess.Tests.csproj", "{500DA735-3DB9-43D5-A022-B7EE05D5919A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,9 +39,21 @@ Global
 		{8DFA8282-B821-463A-914D-E3DE367A1BE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8DFA8282-B821-463A-914D-E3DE367A1BE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8DFA8282-B821-463A-914D-E3DE367A1BE7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0419B9D8-B678-4643-99A2-ED3BC6B7D0F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0419B9D8-B678-4643-99A2-ED3BC6B7D0F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0419B9D8-B678-4643-99A2-ED3BC6B7D0F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0419B9D8-B678-4643-99A2-ED3BC6B7D0F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{500DA735-3DB9-43D5-A022-B7EE05D5919A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{500DA735-3DB9-43D5-A022-B7EE05D5919A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{500DA735-3DB9-43D5-A022-B7EE05D5919A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{500DA735-3DB9-43D5-A022-B7EE05D5919A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{0419B9D8-B678-4643-99A2-ED3BC6B7D0F9} = {07E6609F-5A4D-42A5-A5FA-6623ED94773B}
+		{500DA735-3DB9-43D5-A022-B7EE05D5919A} = {07E6609F-5A4D-42A5-A5FA-6623ED94773B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E2529ED8-72E6-4433-AB8A-95C0A14A1A37}

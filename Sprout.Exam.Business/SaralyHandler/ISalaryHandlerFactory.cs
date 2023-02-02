@@ -5,7 +5,7 @@ namespace Sprout.Exam.Business.SaralyHandler
 {
     public interface ISalaryHandlerFactory
     {
-        void RegisterCalculator(BaseCalculator calculator);
-        BaseCalculator GetCalculator(Employee employee);
+        void RegisterCalculator(ISalaryCalculator calculator);
+        ISalaryCalculator GetCalculator(Employee employee);
     }
 }

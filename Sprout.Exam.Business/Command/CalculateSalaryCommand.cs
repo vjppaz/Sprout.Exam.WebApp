@@ -24,6 +24,13 @@ namespace Sprout.Exam.Business.Command
             this.context = context;
         }
 
+        /// <summary>
+        /// The execute async method.
+        /// </summary>
+        /// <param name="parameter">Contains the data use for salary calculation.</param>
+        /// <param name="cancellationToken">The cancellation token.</param>
+        /// <returns>The salary.</returns>
+        /// <exception cref="KeyNotFoundException">Throws when parameter.EmployeeId does not exist.</exception>
         public async Task<decimal> ExecuteAsync(SalaryCalculatorParameter parameter, CancellationToken cancellationToken)
         {
             var set = context.Set<Employee>();

@@ -12,25 +12,26 @@ namespace Sprout.Exam.Business.SaralyHandler
 {
     public class SalaryHandlerFactory : ISalaryHandlerFactory
     {
-        private List<BaseCalculator> calculators;
+        private List<ISalaryCalculator> calculators;
 
         public SalaryHandlerFactory()
         {
-            calculators = new List<BaseCalculator>();
+            calculators = new List<ISalaryCalculator>();
         }
 
-        public BaseCalculator GetCalculator(Employee employee)
+        public ISalaryCalculator GetCalculator(Employee employee)
         {
-            var calculator = calculators.FirstOrDefault(m => m.TargetType == (EmployeeTypes)employee.EmployeeTypeId);
+            var employeeType = (EmployeeTypes)employee.EmployeeTypeId;
+            var calculator = calculators.FirstOrDefault(m => m.TargetType == employeeType);
             if (calculator == null)
             {
-                throw new NotImplementedException($"No registered calculator for {employee.EmployeeType}");
+                throw new NotImplementedException($"No registered calculator for {employeeType}");
             }
 
             return calculator;
         }
 
-        public void RegisterCalculator(BaseCalculator calculator)
+        public void RegisterCalculator(ISalaryCalculator calculator)
         {
             if (calculators.Any(m => m.TargetType == calculator.TargetType))
             {
