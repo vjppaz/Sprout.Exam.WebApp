@@ -16,6 +16,7 @@ using Sprout.Exam.Business.SaralyHandler.Computations;
 using Sprout.Exam.Business.SaralyHandler.Salaries;
 using Sprout.Exam.DataAccess.Models;
 using Sprout.Exam.WebApp.Data;
+using Sprout.Exam.WebApp.Middleware;
 using System;
 
 namespace Sprout.Exam.WebApp
@@ -104,6 +105,7 @@ namespace Sprout.Exam.WebApp
                 app.UseHsts();
             }
 
+            app.UseMiddleware<ExceptionHandlingMiddleware>();
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
